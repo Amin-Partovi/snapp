@@ -1,0 +1,15 @@
+<svg width="22" height="22" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter color-interpolation-filters="auto" id="a">
+            <feColorMatrix in="SourceGraphic"
+                           values="0 0 0 0 0.129623 0 0 0 0 0.149853 0 0 0 0 0.178753 0 0 0 0.600000 0"/>
+        </filter>
+    </defs>
+    <g transform="translate(-540 -19)" filter="url(#a)" fill="none" fill-rule="evenodd"
+       stroke-linecap="square">
+        <g transform="translate(541 20.5)" stroke="#000" stroke-width="1.89">
+            <path d="M13.745 13.768 19 19"/>
+            <ellipse cx="7.92" cy="7.886" rx="7.92" ry="7.886"/>
+        </g>
+    </g>
+</svg>

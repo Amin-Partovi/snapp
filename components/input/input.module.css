@@ -1,0 +1,17 @@
+
+.inputGroup{
+    all: unset;
+    height: 30px;
+    background-color: white;
+    width: 80%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+.input{
+    all: unset;
+    width: 100%;
+    margin: 0 10px;
+  
+}
