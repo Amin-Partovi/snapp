@@ -1,8 +1,18 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem;
+    min-height: 100vh;
+  }
+
 .container{
     width: 600px;
     height: 600px;
     display: flex;
     justify-content: center;
-    border: 1px solid blue;
-   position: relative;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
 }

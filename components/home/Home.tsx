@@ -18,18 +18,16 @@ const Home: React.FC = () => {
     setAddress(e.target.value);
   }
   return (
-    <div className={styles.main}>
-      <Container>
-        <Input
-          value={address}
-          onChange={handleChangeAddress}
-          icon={Search}
-          placeholder={messages.SEARCH_TEH}
-          className={styles.search}
-        />
-        <MapWithNoSSR />
-      </Container>
-    </div>
+    <Container>
+      <Input
+        value={address}
+        onChange={handleChangeAddress}
+        icon={Search}
+        placeholder={messages.SEARCH_TEH}
+        className={styles.search}
+      />
+      <MapWithNoSSR />
+    </Container>
   );
 };
 
