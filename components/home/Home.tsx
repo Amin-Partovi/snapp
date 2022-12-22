@@ -19,11 +19,15 @@ const Home: React.FC = () => {
   const [address, setAddress] = useState<string>("");
   const [location, setLocation] = useState<LatLngExpression>(InitialLocation);
 
+  function handleChangeLocation(location: LatLngExpression) {
+    setLocation(location);
+  }
+
   function sendAddress(address: string) {
     fetch(`/search/search-address?address=${address}`)
       .then((res) => res.json())
       .then((res) => {
-        setLocation([res.lat, res.lng]);
+        handleChangeLocation([res.lat, res.lng]);
       });
   }
 
@@ -50,7 +54,10 @@ const Home: React.FC = () => {
         placeholder={messages.SEARCH_TEH}
         className={styles.search}
       />
-      <MapWithNoSSR location={location} />
+      <MapWithNoSSR
+        location={location}
+        onChangeLocation={handleChangeLocation}
+      />
     </Container>
   );
 };

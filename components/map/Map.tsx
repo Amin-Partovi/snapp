@@ -1,20 +1,21 @@
 import React from "react";
-import { MapContainer, TileLayer, Popup, ZoomControl } from "react-leaflet";
+import { MapContainer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { LatLngExpression } from "leaflet";
 
-import { messages } from "../../statics/messages";
-import CustomMarker from "./CustomMarker";
+import Location from "./Location";
 
 import styles from "./map.module.css";
-import { LatLngExpression } from "leaflet";
+import MapContent from "./MapContent";
 
 interface Props {
   location: LatLngExpression;
+  onChangeLocation: (location: LatLngExpression) => void;
 }
 
 const INIT_ZOOM = 12;
 
-const Map: React.FC<Props> = ({ location }) => {
+const Map: React.FC<Props> = ({ location, onChangeLocation }) => {
   return (
     <>
       <MapContainer
@@ -24,12 +25,9 @@ const Map: React.FC<Props> = ({ location }) => {
         className={styles.mapContainer}
         zoomControl={false}
       >
-        <ZoomControl position="bottomleft" />
-        <TileLayer url="https://raster.snappmaps.ir/styles/snapp-style/{z}/{x}/{y}{r}.png" />
-        <CustomMarker position={location}>
-          <Popup>{messages.YOUR_LOCATION}</Popup>
-        </CustomMarker>
+        <MapContent location={location} onChangeLocation={onChangeLocation} />
       </MapContainer>
+      <Location location={location} />
     </>
   );
 };
