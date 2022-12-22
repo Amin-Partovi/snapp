@@ -34,7 +34,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 
-### How to use Project
+## How to use Project
 
 The location of the marker can be changed through 3ways
 
