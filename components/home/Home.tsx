@@ -8,6 +8,7 @@ import { messages } from "../../statics/messages";
 
 import styles from "./home.module.css";
 import { LatLngExpression } from "leaflet";
+import useDebounce from "../../utils/hooks/useDebounce";
 
 const MapWithNoSSR = dynamic(() => import("../map/Map"), {
   ssr: false,
@@ -18,6 +19,8 @@ const InitialLocation: LatLngExpression = [35.7343, 51.3587];
 const Home: React.FC = () => {
   const [address, setAddress] = useState<string>("");
   const [location, setLocation] = useState<LatLngExpression>(InitialLocation);
+
+  const debouncedValue = useDebounce(address);
 
   function handleChangeLocation(location: LatLngExpression) {
     setLocation(location);
@@ -32,15 +35,8 @@ const Home: React.FC = () => {
   }
 
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout>;
-    if (address) {
-      timeoutId = setTimeout(() => sendAddress(address), 500);
-    }
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [address]);
+    if (debouncedValue) sendAddress(debouncedValue);
+  }, [debouncedValue]);
 
   function handleChangeAddress(e: React.ChangeEvent<HTMLInputElement>) {
     setAddress(e.target.value);

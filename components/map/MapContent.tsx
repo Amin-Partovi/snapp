@@ -18,6 +18,9 @@ const MapContent: React.FC<Props> = ({ location, onChangeLocation }) => {
       onChangeLocation(Object.values(e.latlng));
       map.flyTo(e.latlng, map.getZoom());
     },
+    drag(e) {
+      onChangeLocation(Object.values(e.target.getCenter()));
+    },
   });
 
   return location === null ? null : (
