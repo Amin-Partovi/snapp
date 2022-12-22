@@ -1,7 +1,7 @@
 import React from "react";
 import { MapContainer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { LatLngExpression } from "leaflet";
+import { LatLngTuple } from "leaflet";
 
 import Location from "./Location";
 
@@ -9,14 +9,13 @@ import styles from "./map.module.css";
 import MapContent from "./MapContent";
 
 interface Props {
-  location: LatLngExpression;
-  onChangeLocation: (location: LatLngExpression) => void;
+  location: LatLngTuple;
+  onChangeLocation: (location: LatLngTuple) => void;
 }
 
 const INIT_ZOOM = 12;
 
 const Map: React.FC<Props> = ({ location, onChangeLocation }) => {
- 
   return (
     <>
       <MapContainer

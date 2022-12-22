@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { LatLngTuple } from "leaflet";
+import { format } from "react-string-format";
 
 import Container from "../container/Container";
 import Input from "../input/Input";
 import Search from "../../public/search.svg";
 import { messages } from "../../statics/messages";
-
-import styles from "./home.module.css";
-import { LatLngExpression } from "leaflet";
 import useDebounce from "../../utils/hooks/useDebounce";
 import { Address } from "../../utils/types";
 import Header from "../header/Header";
+import { urls } from "../../statics/urls";
+
+import styles from "./home.module.css";
 
 const MapWithNoSSR = dynamic(() => import("../map/Map"), {
   ssr: false,
 });
 
-const InitialLocation: LatLngExpression = [35.7343, 51.3587];
+const InitialLocation: LatLngTuple = [35.7343, 51.3587];
 
 const Home: React.FC = () => {
   const [term, setTerm] = useState<string>("");
-  const [location, setLocation] = useState<LatLngExpression>(InitialLocation);
-  const [address, setAddress] = useState<Address>();
+  const [location, setLocation] = useState<LatLngTuple>(InitialLocation);
+  const [address, setAddress] = useState<Address>([]);
 
   const debouncedTerm = useDebounce(term);
   const debouncedLocation = useDebounce(location);
@@ -38,21 +40,21 @@ const Home: React.FC = () => {
     setTerm("");
   }
 
-  function handleChangeLocation(location: LatLngExpression) {
+  function handleChangeLocation(location: LatLngTuple) {
     setLocation(location);
   }
 
   function searchAddress(address: string) {
-    fetch(`/search/search-address?address=${address}`)
+    fetch(format(urls.SEARCH_ADDRESS, address))
       .then((res) => res.json())
       .then((res) => {
         handleChangeLocation([res.lat, res.lng]);
       });
   }
 
-  function searchLocation(debouncedLocation: LatLngExpression) {
+  function searchLocation(debouncedLocation: LatLngTuple) {
     fetch(
-      `/search/get-address?lat=${debouncedLocation[0]}&lng=${debouncedLocation[1]}`
+      format(urls.SEARCH_LOCATION, debouncedLocation[0], debouncedLocation[1])
     )
       .then((res) => res.json())
       .then((res) => setAddress(res));
@@ -73,6 +75,7 @@ const Home: React.FC = () => {
           className={styles.search}
           onDelete={handleDeleteTerm}
         />
+
         <MapWithNoSSR
           location={location}
           onChangeLocation={handleChangeLocation}

@@ -1,11 +1,11 @@
 import React from "react";
-import { LatLngExpression } from "leaflet";
+import { LatLngTuple } from "leaflet";
 import { messages } from "../../statics/messages";
 
 import styles from "./location.module.css";
 
 interface Props {
-  location: LatLngExpression;
+  location: LatLngTuple;
 }
 
 const Location: React.FC<Props> = ({ location }) => {

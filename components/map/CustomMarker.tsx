@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from "react";
-import L, { LatLngExpression } from "leaflet";
+import L, { LatLngTuple } from "leaflet";
 import { Marker } from "react-leaflet";
 
 import { icon } from "leaflet";
@@ -10,13 +10,12 @@ const ICON = icon({
 });
 
 interface Props extends PropsWithChildren<any> {
-  position: LatLngExpression;
+  position: LatLngTuple;
 }
 
 const CustomMarker: React.FC<Props> = ({ children, position }) => {
-
   return (
-    <Marker position={position} icon={ICON}>
+    <Marker position={position} icon={ICON} autoPan={true}>
       {children}
     </Marker>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { LatLngExpression, LeafletMouseEvent } from "leaflet";
+import { LatLngTuple, LeafletMouseEvent } from "leaflet";
 import { TileLayer, Popup, ZoomControl, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -7,8 +7,8 @@ import { messages } from "../../statics/messages";
 import CustomMarker from "./CustomMarker";
 
 interface Props {
-  location: LatLngExpression;
-  onChangeLocation: (location: LatLngExpression) => void;
+  location: LatLngTuple;
+  onChangeLocation: (location: LatLngTuple) => void;
 }
 
 const MapContent: React.FC<Props> = ({ location, onChangeLocation }) => {
