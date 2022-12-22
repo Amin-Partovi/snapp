@@ -17,3 +17,7 @@
     color: var(--gray-color)
   
 }
+
+.close{
+    cursor: pointer;
+}

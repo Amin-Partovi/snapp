@@ -1,0 +1,10 @@
+.header{
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    justify-content: center;
+    height: 80px;
+    align-items: center;
+}

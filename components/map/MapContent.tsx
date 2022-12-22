@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { LatLngExpression, LeafletMouseEvent } from "leaflet";
 import { TileLayer, Popup, ZoomControl, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";

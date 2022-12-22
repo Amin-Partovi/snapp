@@ -14,6 +14,7 @@ interface Props extends PropsWithChildren<any> {
 }
 
 const CustomMarker: React.FC<Props> = ({ children, position }) => {
+
   return (
     <Marker position={position} icon={ICON}>
       {children}

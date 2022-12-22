@@ -1,12 +1,14 @@
 import Image from "next/image";
 import React, { InputHTMLAttributes } from "react";
 
+import Close from "../../public/close.svg";
 import styles from "./input.module.css";
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   icon: string;
+  onDelete: () => void;
 }
 
 const Input: React.FC<Props> = ({
@@ -14,6 +16,7 @@ const Input: React.FC<Props> = ({
   onChange,
   icon,
   className,
+  onDelete,
   ...rest
 }) => {
   return (
@@ -25,6 +28,16 @@ const Input: React.FC<Props> = ({
         className={styles.input}
         {...rest}
       />
+      {value && (
+        <Image
+          src={Close}
+          alt="close"
+          width={10}
+          height={10}
+          onClick={onDelete}
+          className={styles.close}
+        />
+      )}
     </div>
   );
 };
