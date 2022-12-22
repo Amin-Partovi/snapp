@@ -7,19 +7,36 @@ import Search from "../../public/search.svg";
 import { messages } from "../../statics/messages";
 
 import styles from "./home.module.css";
+import { LatLngExpression } from "leaflet";
 
 const MapWithNoSSR = dynamic(() => import("../map/Map"), {
   ssr: false,
 });
 
+const InitialLocation: LatLngExpression = [35.7343, 51.3587];
+
 const Home: React.FC = () => {
   const [address, setAddress] = useState<string>("");
+  const [location, setLocation] = useState<LatLngExpression>(InitialLocation);
+
+  function sendAddress(address: string) {
+    fetch(`/search/search-address?address=${address}`)
+      .then((res) => res.json())
+      .then((res) => {
+        setLocation([res.lat, res.lng]);
+      });
+  }
 
   useEffect(() => {
-    fetch("/search/get-address/")
-      .then((res) => res.json())
-      .then((res) => console.log(res));
-  }, []);
+    let timeoutId: ReturnType<typeof setTimeout>;
+    if (address) {
+      timeoutId = setTimeout(() => sendAddress(address), 500);
+    }
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [address]);
 
   function handleChangeAddress(e: React.ChangeEvent<HTMLInputElement>) {
     setAddress(e.target.value);
@@ -33,7 +50,7 @@ const Home: React.FC = () => {
         placeholder={messages.SEARCH_TEH}
         className={styles.search}
       />
-      <MapWithNoSSR />
+      <MapWithNoSSR location={location} />
     </Container>
   );
 };

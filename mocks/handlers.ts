@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 import randomLocationGenerator from '../utils/randomLocationGenerator';
 
-import { Location } from './types';
+import { Location } from '../utils/types';
 
 export const handlers = [
     rest.post('/search/get-address/', (req, res, ctx) => {
@@ -11,7 +11,7 @@ export const handlers = [
       )
     }),
 
-    rest.get('/search/get-address/', (req, res, ctx) => {
+    rest.get('/search/search-address', (req, res, ctx) => {
  
       return res(
         ctx.status(200),
