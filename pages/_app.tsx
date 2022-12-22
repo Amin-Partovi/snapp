@@ -1,11 +1,6 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
 
-// if (process.env.NODE_ENV === "development") {
-//   import("../mocks").then(({ setupMocks }) => {
-//     setupMocks();
-//   });
-// }
+import "../styles/globals.css";
 
 if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
   require("../mocks");

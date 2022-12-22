@@ -1,4 +1,5 @@
 import { rest } from 'msw';
+import randomLocationGenerator from '../utils/randomLocationGenerator';
 
 import { Location } from './types';
 
@@ -11,13 +12,10 @@ export const handlers = [
     }),
 
     rest.get('/search/get-address/', (req, res, ctx) => {
- console.log("here")
+ 
       return res(
         ctx.status(200),
-        ctx.json<Location>({
-          lat: 53,
-          lng:37
-        }),
+        ctx.json<Location>(randomLocationGenerator()),
       )
     }),
   ]
