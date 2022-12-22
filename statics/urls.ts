@@ -6,4 +6,5 @@ export const paths={
 export const urls={
     SEARCH_ADDRESS:`${paths.SEARCH_ADDRESS}?address={0}`,
     SEARCH_LOCATION  :`${paths.SEARCH_LOCATION}?lat={0}&lng={1}`,
+    TILE_SERVER:"https://raster.snappmaps.ir/styles/snapp-style/{z}/{x}/{y}{r}.png"
 }

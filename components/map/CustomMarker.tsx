@@ -1,8 +1,6 @@
 import React, { PropsWithChildren } from "react";
-import L, { LatLngTuple } from "leaflet";
+import { LatLngTuple, icon } from "leaflet";
 import { Marker } from "react-leaflet";
-
-import { icon } from "leaflet";
 
 const ICON = icon({
   iconUrl: "/marker.svg",

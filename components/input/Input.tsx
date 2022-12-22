@@ -22,12 +22,14 @@ const Input: React.FC<Props> = ({
   return (
     <div className={`${styles.inputGroup} ${className}`}>
       <Image src={icon} alt="icon" width={15} height={15} />
+
       <input
         value={value}
         onChange={onChange}
         className={styles.input}
         {...rest}
       />
+
       {value && (
         <Image
           src={Close}

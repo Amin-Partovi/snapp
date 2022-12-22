@@ -5,6 +5,7 @@ import "leaflet/dist/leaflet.css";
 
 import { messages } from "../../statics/messages";
 import CustomMarker from "./CustomMarker";
+import { urls } from "../../statics/urls";
 
 interface Props {
   location: LatLngTuple;
@@ -29,7 +30,7 @@ const MapContent: React.FC<Props> = ({ location, onChangeLocation }) => {
   return location === null ? null : (
     <>
       <ZoomControl position="bottomleft" />
-      <TileLayer url="https://raster.snappmaps.ir/styles/snapp-style/{z}/{x}/{y}{r}.png" />
+      <TileLayer url={urls.TILE_SERVER} />
       <CustomMarker position={location}>
         <Popup>{messages.YOUR_LOCATION}</Popup>
       </CustomMarker>
