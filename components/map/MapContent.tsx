@@ -30,7 +30,9 @@ const MapContent: React.FC<Props> = ({ location, onChangeLocation }) => {
   return location === null ? null : (
     <>
       <ZoomControl position="bottomleft" />
+
       <TileLayer url={urls.TILE_SERVER} />
+
       <CustomMarker position={location}>
         <Popup>{messages.YOUR_LOCATION}</Popup>
       </CustomMarker>

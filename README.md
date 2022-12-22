@@ -32,3 +32,18 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+### How to use Project
+
+The location of the marker can be changed through 3ways
+
+*   clicking on the map
+*   searching an address
+*   dragging map
+
+**search input debounce:** The "search/search-address" API will be called after at least 500ms of no change to the input search for the search input component.
+
+**location debounce:** A debounce is used to prevent redundant API calls to "search/get-address" when the location changes
+
+**The mock data is used for API calls:** random data is generated when a location is searched in the input, and when the location is changed, a random address is generated

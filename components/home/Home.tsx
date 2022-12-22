@@ -63,6 +63,7 @@ const Home: React.FC = () => {
   function handleChangeAddress(e: React.ChangeEvent<HTMLInputElement>) {
     setTerm(e.target.value);
   }
+
   return (
     <>
       <Header address={address} />

@@ -4,9 +4,9 @@ import "leaflet/dist/leaflet.css";
 import { LatLngTuple } from "leaflet";
 
 import Location from "./Location";
+import MapContent from "./MapContent";
 
 import styles from "./map.module.css";
-import MapContent from "./MapContent";
 
 interface Props {
   location: LatLngTuple;
