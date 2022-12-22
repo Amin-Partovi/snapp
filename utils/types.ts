@@ -3,7 +3,4 @@ export type Location={
     lng: number
 }
 
-export type Address={
-    city:string;
-    street:string
-} 
+export type Address=[string, string]

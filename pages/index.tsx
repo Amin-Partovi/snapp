@@ -9,7 +9,7 @@ export default function HomePage() {
         <title>Map Assignment</title>
         <meta name="description" content="Snap! Shop assignemnt" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/snapp-shop-logo.webp" />
+        <link rel="icon" href="/snapp-shop-logo.png" />
       </Head>
       <Home />
     </>

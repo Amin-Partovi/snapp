@@ -12,10 +12,10 @@ const Location: React.FC<Props> = ({ location }) => {
   return (
     <div className={styles.locationBox}>
       <span>
-        {messages.LAT}:{location[0]?.toFixed(3)}
+        {messages.LAT}: {location[0]?.toFixed(3)}
       </span>
       <span>
-        {messages.LNG}:{location[1]?.toFixed(3)}
+        {messages.LNG}: {location[1]?.toFixed(3)}
       </span>
     </div>
   );
