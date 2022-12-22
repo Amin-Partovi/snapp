@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LatLngExpression, LeafletMouseEvent } from "leaflet";
 import { TileLayer, Popup, ZoomControl, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -16,12 +16,15 @@ const MapContent: React.FC<Props> = ({ location, onChangeLocation }) => {
     click(e: LeafletMouseEvent) {
       map.locate();
       onChangeLocation(Object.values(e.latlng));
-      map.flyTo(e.latlng, map.getZoom());
     },
     drag(e) {
       onChangeLocation(Object.values(e.target.getCenter()));
     },
   });
+
+  useEffect(() => {
+    map.flyTo(location);
+  }, [location]);
 
   return location === null ? null : (
     <>

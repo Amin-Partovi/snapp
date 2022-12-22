@@ -16,6 +16,7 @@ interface Props {
 const INIT_ZOOM = 12;
 
 const Map: React.FC<Props> = ({ location, onChangeLocation }) => {
+ 
   return (
     <>
       <MapContainer

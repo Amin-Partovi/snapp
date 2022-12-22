@@ -20,13 +20,14 @@ const Home: React.FC = () => {
   const [address, setAddress] = useState<string>("");
   const [location, setLocation] = useState<LatLngExpression>(InitialLocation);
 
-  const debouncedValue = useDebounce(address);
+  const debouncedAddress = useDebounce(address);
+  const debouncedLocation = useDebounce(location);
 
   function handleChangeLocation(location: LatLngExpression) {
     setLocation(location);
   }
 
-  function sendAddress(address: string) {
+  function searchAddress(address: string) {
     fetch(`/search/search-address?address=${address}`)
       .then((res) => res.json())
       .then((res) => {
@@ -34,9 +35,21 @@ const Home: React.FC = () => {
       });
   }
 
+  function searchLocation(debouncedLocation: LatLngExpression) {
+    fetch(
+      `/search/get-address?lat=${debouncedLocation[0]}&lng=${debouncedLocation[1]}`
+    )
+      .then((res) => res.json())
+      .then((res) => console.log(res));
+  }
+
   useEffect(() => {
-    if (debouncedValue) sendAddress(debouncedValue);
-  }, [debouncedValue]);
+    if (debouncedAddress) searchAddress(debouncedAddress);
+  }, [debouncedAddress]);
+
+  useEffect(() => {
+    searchLocation(debouncedLocation);
+  }, [debouncedLocation]);
 
   function handleChangeAddress(e: React.ChangeEvent<HTMLInputElement>) {
     setAddress(e.target.value);

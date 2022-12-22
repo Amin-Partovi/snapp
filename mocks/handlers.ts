@@ -1,13 +1,15 @@
 import { rest } from 'msw';
 import randomLocationGenerator from '../utils/randomLocationGenerator';
+import { randomAddressGenerator } from '../utils/randomAddressGenerator';
 
-import { Location } from '../utils/types';
+import { Location, Address } from '../utils/types';
 
 export const handlers = [
-    rest.post('/search/get-address/', (req, res, ctx) => {
+    rest.get('/search/get-address', (req, res, ctx) => {
       
       return res(
         ctx.status(200),
+        ctx.json<Address>(randomAddressGenerator()),
       )
     }),
 
