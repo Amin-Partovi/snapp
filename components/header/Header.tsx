@@ -10,7 +10,10 @@ interface Props {
 const Header: React.FC<Props> = ({ address }) => {
   return (
     <div className={styles.header}>
-      {address?.length > 0 && address.map((item) => <span>{item}</span>)}
+      {address?.length > 0 &&
+        address.map((item: string, index: number) => (
+          <span key={index}>{item}</span>
+        ))}
     </div>
   );
 };
